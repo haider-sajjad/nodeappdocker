@@ -19,9 +19,9 @@ jobs:
           
       - name: build and push docker image to GHCR
         run: |
-          docker build -t ghcr.io/nodeappdocker/nodeapp:xyzabcoooo .
+          docker build -t ghcr.io/${{ github.repository_owner }}/nodeappdocker/nodeapp:xyzabcoooo .
           IMAGE_ID=ghcr.io/nodeapp:xyzabcoooo
-          docker push ghcr.io/nodeappdocker/nodeapp:xyzabcoooo
+          docker push ghcr.io/${{ github.repository_owner }}/nodeappdocker/nodeapp:xyzabcoooo
           echo "Docker Image build success"
           
       
