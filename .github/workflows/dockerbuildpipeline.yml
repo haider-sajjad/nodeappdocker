@@ -17,9 +17,11 @@ jobs:
           echo "${{ secrets.GITHUB_TOKEN }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
           echo "GHCR login success"
           
-      - name: build docker image
+      - name: build and push docker image to GHCR
         run: |
           docker build -t nodeapp:xyzabcoooo .
+          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/nodeapp:xyzabcoooo
+          docker push $IMAGE_ID
           echo "Docker Image build success"
           
       
