@@ -11,7 +11,15 @@ jobs:
     runs-on: ubuntu-latest
   
     steps:
+      - uses: actions/checkout@v2
       - name: login to GHCR
         run: |
           echo "${{ secrets.GITHUB_TOKEN }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
-          echo "WORLD"
+          echo "GHCR login success"
+          
+      - name: build docker image
+        run: |
+          docker build -t nodeapp:xyzabcoooo .
+          echo "Docker Image build success"
+          
+      
